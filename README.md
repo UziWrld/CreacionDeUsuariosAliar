@@ -1,22 +1,22 @@
 # Herramienta de Gestión y Aprovisionamiento en Active Directory - Aliar S.A.
 
-Aplicación corporativa de producción para la gestión, consulta, clonación de permisos y creación individual y masiva de colaboradores en Active Directory bajo el contenedor oficial:
+Aplicación corporativa para la administración, consulta, clonación de permisos y aprovisionamiento individual y masivo de colaboradores en Active Directory bajo la ruta oficial:
 
 `OU=USUARIOS,OU=E_ALIAR,DC=aliar,DC=com,DC=co`
 
 ---
 
-## 🚀 Inicio Rápido
+## Inicio Rápido
 
-Para ejecutar la aplicación en cualquier equipo:
-1. Haz doble clic sobre **`Iniciar-AppWinForms.vbs`** (lanzamiento silencioso sin consolas) o **`Iniciar-AppWinForms.bat`**.
-2. Para crear un acceso directo en tu Escritorio, ejecuta **`Crear-AccesoDirectoEscritorio.bat`**.
+Para iniciar la aplicación:
+1. Ejecutar **`Iniciar-AppWinForms.vbs`** (inicio silencioso en segundo plano) o **`Iniciar-AppWinForms.bat`**.
+2. Para generar el acceso directo en el Escritorio del usuario, ejecutar **`Crear-AccesoDirectoEscritorio.bat`**.
 
 ---
 
-## 🔄 Cómo Actualizar la Herramienta (Para el Equipo)
+## Actualización del Repositorio
 
-Cualquier miembro del equipo con acceso al repositorio puede actualizar la aplicación a la última versión ejecutando en una terminal dentro de esta carpeta:
+Para sincronizar la herramienta con la última versión publicada en GitHub, ejecutar dentro de esta carpeta:
 
 ```bash
 git pull
@@ -24,42 +24,42 @@ git pull
 
 ---
 
-## ✨ Características Principales
+## Funcionalidades Principales
 
-1. **Pestaña 1: Creación Individual (Nuevo Colaborador)**
-   - **Pegado Inteligente:** Pega la información enviada por Gestión Humana (ejemplo: `1013687966 JOSE ANGEL ROMERO GUERRERO OPERARIO PLANTA`) y el sistema auto-clasifica los nombres en Tipo Título (`Jose Angel Romero Guerrero`), el cargo en Tipo Título (`Operario Planta`), asigna automáticamente la Sede (`CUN_PLENG`) y genera el usuario de dominio (`jose.romero`).
-   - **Clonación de Modelo:** Permite buscar a un colaborador modelo para heredar en vivo su Sede, Departamento, Perfil Web (`GR_Perfil_*`), acceso a VPN (`GR_VPN_SSL`) y todas sus membresías departamentales y de carpetas.
-   - **Copia de Credenciales:** Botón dedicado para copiar al portapapeles en formato limpio:
-     ```text
-     Usuario de dominio: nombre.apellido
-     Contraseña: clave
-     ```
+### 1. Creación Individual (Nuevo Colaborador)
+- **Pegado Inteligente:** Procesa cadenas de texto recibidas de Gestión Humana (ejemplo: `1013687966 JOSE ANGEL ROMERO GUERRERO OPERARIO PLANTA`), separando automáticamente la cédula, asignando nombres y cargo en Tipo Título (`Jose Angel Romero Guerrero`, `Operario Planta`), identificando la Sede en mayúscula sostenida (`CUN_PLENG`) y generando el usuario de dominio (`jose.romero`).
+- **Clonación desde Modelo:** Permite buscar a un colaborador existente en el Directorio Activo para heredar en tiempo real su Sede, Departamento, Perfil Web (`GR_Perfil_*`), acceso VPN (`GR_VPN_SSL`) y la totalidad de sus membresías y carpetas departamentales.
+- **Copia de Credenciales:** Genera en el portapapeles el formato directo para notificación:
+  ```text
+  Usuario de dominio: nombre.apellido
+  Contraseña: clave
+  ```
 
-2. **Pestaña 2: Gestión de Permisos (Colaborador Existente)**
-   - Consulta instantánea y en tiempo real de colaboradores y sus membresías en Active Directory.
-   - Cálculo automático de diferencial de grupos a agregar y grupos a remover.
-   - Clonación directa de permisos entre colaboradores del mismo rol o sede.
+### 2. Gestión de Permisos (Colaborador Existente)
+- Consulta en vivo contra el Controlador de Dominio de los grupos actuales del colaborador.
+- Cálculo de diferenciales automáticos (grupos a agregar vs. grupos a remover).
+- Homologación de permisos tomando como referencia a otro colaborador del área o sede.
 
-3. **Pestaña 3: Carga Masiva (Lotes de Personal)**
-   - Tabla interactiva editable para procesar decenas o cientos de colaboradores en segundos.
-   - Casilla de VPN habilitada por defecto y configurable por fila.
-   - Copia masiva de credenciales para entrega a Gestión Humana.
-   - Exportación de reporte formal a CSV / Excel (`Reporte_Aprovisionamiento_GH_*.csv`).
+### 3. Carga Masiva (Lotes de Personal)
+- Cuadrícula interactiva para aprovisionar lotes de colaboradores.
+- Casilla de acceso VPN individual por fila (habilitada por defecto).
+- Copia consolidada de credenciales para entrega a Gestión Humana.
+- Exportación del reporte final a formato CSV compatible con Microsoft Excel.
 
-4. **Sincronización de Sedes y OUs Oficiales**
-   - Cobertura completa de las 33 Unidades Organizativas (OUs) oficiales de Aliar S.A. distribuidas en Cundinamarca, Meta, Santander, Antioquia, Atlántico y demás regionales.
+### 4. Soporte Oficial de Sedes y Unidades Organizativas (OU)
+- Enlace directo con las 33 Unidades Organizativas oficiales del dominio `aliar.com.co` (Cundinamarca, Meta, Santander, Antioquia, Atlántico y demás regionales).
 
 ---
 
-## 📋 Estructura del Repositorio
+## Estructura de Archivos
 
-- `App-CreacionUsuariosAliar.ps1`: Script principal con interfaz gráfica Windows Forms y lógica de dominio.
-- `MANUAL_DE_USO.txt`: Manual operativo detallado en texto plano.
-- `README.md`: Documentación del proyecto.
+- `App-CreacionUsuariosAliar.ps1`: Lógica principal del sistema e interfaz gráfica en Windows Forms.
+- `MANUAL_DE_USO.txt`: Manual operativo de referencia en texto plano.
+- `README.md`: Documentación técnica del proyecto.
 - `aliar_ad_data.json`: Base de datos local de respaldo con estructura de grupos y usuarios.
-- `Logo-web-1.png`: Logotipo corporativo de Aliar S.A.
-- `Iniciar-AppWinForms.vbs`: Lanzador silencioso sin consola para usuarios finales.
-- `Iniciar-AppWinForms.bat`: Lanzador alternativo por consola.
-- `Reiniciar-AppWinForms.bat`: Cierra instancias colgadas y reinicia la herramienta.
-- `Crear-AccesoDirectoEscritorio.bat`: Crea el acceso directo en el Escritorio.
-- `.gitignore`: Excluye archivos temporales y reportes de personal generados localmente.
+- `Logo-web-1.png`: Imagen corporativa institucional.
+- `Iniciar-AppWinForms.vbs`: Lanzador silencioso de la aplicación.
+- `Iniciar-AppWinForms.bat`: Lanzador estándar por consola de comandos.
+- `Reiniciar-AppWinForms.bat`: Utilidad de desbloqueo y reinicio de procesos.
+- `Crear-AccesoDirectoEscritorio.bat`: Generador de acceso directo en el Escritorio.
+- `.gitignore`: Configuración de exclusión para temporales y reportes de datos sensibles.
