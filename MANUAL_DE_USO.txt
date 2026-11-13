@@ -1,0 +1,220 @@
+================================================================================
+MANUAL DE USO: HERRAMIENTA DE GESTION ACTIVE DIRECTORY - ALIAR S.A.
+Aplicacion Corporativa de Produccion
+Dominio: aliar.com.co | Contenedor: OU=USUARIOS,OU=E_ALIAR,DC=aliar,DC=com,DC=co
+================================================================================
+
+1. INICIO RAPIDO DE LA APLICACION
+
+Para abrir la herramienta de gestion en tu equipo:
+- Doble clic en Iniciar-AppWinForms.vbs o Iniciar-AppWinForms.bat.
+  (Abre de manera instantanea y silenciosa, sin consolas de comandos).
+- O utiliza el acceso directo en el Escritorio creado por Crear-AccesoDirectoEscritorio.bat.
+- Consulta Automatica del Dominio: Al abrir la aplicacion, el sistema consulta
+  automaticamente en tiempo real el Active Directory si el equipo esta conectado
+  al dominio, manteniendo los grupos y estadisticas actualizados.
+
+
+2. ARQUITECTURA DE UNIDADES ORGANIZATIVAS (OU) Y SEDES EN ACTIVE DIRECTORY
+
+Todas las cuentas de usuario de la organizacion se aprovisionan de forma estructurada
+dentro de su respectiva Unidad Organizativa bajo la ruta corporativa:
+OU=USUARIOS,OU=E_ALIAR,DC=aliar,DC=com,DC=co
+
+La aplicacion incluye y sincroniza en vivo las 33 Unidades Organizativas oficiales:
+
+CUNDINAMARCA Y BOGOTA:
+- AL_CUN_PL_ENGATIVA (Planta Engativa Bogota - CUN_PLENG)
+- AL_CUN_PL_GUADALUPE (Planta Guadalupe Cundinamarca - CUN_PLGUA)
+- AL_CUN_DIST_BOGOTA (Distribucion Bogota - CUN_DISBOG)
+- AL_CUN_DIST_PALOQUEMAO (Distribucion Paloquemao - CUN_DISPLQ)
+- AL_CUN_ADMON_BOGOTA (Administracion Bogota - CUN_ADM)
+- AL_CUN_PV_CUNDINAMARCA (Puntos de Venta Cundinamarca y Bogota - CUN_PV)
+
+META, PUERTO GAITAN Y VILLAVICENCIO:
+- AL_MET_FRIGORIFICO (Planta Frigorifico Puerto Gaitan - MET_FRIG)
+- AL_MET_PL_AGROINDUSTRIALES (Plantas Agroindustriales Alimentos - MET_PLAGR)
+- AL_MET_PORCICULTURA (Granjas Porcicultura La Fazenda - MET_PORCI)
+- AL_MET_AGRICULTURA (Agricultura y Granos Puerto Gaitan - MET_AGRI)
+- AL_MET_GANADERIA (Ganaderia Meta - MET_GAN)
+- AL_MET_TALLERES_AGR (Talleres Agricolas y Maquinaria - MET_TALLER)
+- AL_MET_MANT_PLANTAS (Mantenimiento de Plantas Meta - MET_MANT)
+- AL_MET_OBRAS_CIVILES (Obras Civiles y Construccion Meta - MET_OBRAS)
+- AL_MET_ADMON_FINCAS (Administracion Fincas La Fazenda - MET_ADM)
+- AL_MET_DIST_VILLAVICENCIO (Distribucion Villavicencio - MET_DISVIL)
+- AL_MET_PV_META (Puntos de Venta Meta y Llanos - MET_PV)
+
+SANTANDER, BUCARAMANGA Y PIEDECUESTA:
+- AL_SAN_OFICINA_PPAL (Oficina Principal Piedecuesta - SAN_OFPP)
+- AL_SAN_DIST_BMANGA (Distribucion Bucaramanga - SAN_DISBGA)
+- AL_SAN_PV_SANTANDER (Puntos de Venta Santander - SAN_PV)
+
+ANTIOQUIA Y MEDELLIN:
+- AL_ANT_DIST_MEDELLIN (Distribucion Medellin - ANT_DISMED)
+- AL_ANT_PV_ANTIOQUIA (Puntos de Venta Antioquia - ANT_PV)
+
+ATLANTICO Y BARRANQUILLA:
+- AL_ATL_DIST_BARRANQUILLA (Distribucion Barranquilla - ATL_DISBQA)
+- AL_ATL_PV_ATLANTICO (Puntos de Venta Atlantico - ATL_PV)
+
+OTRAS REGIONALES:
+- AL_CES_PV_CESAR (Puntos de Venta Cesar / Valledupar - CES_PV)
+- AL_CAS_PV_CASANARE (Puntos de Venta Casanare / Yopal / Villanueva - CAS_PV)
+- AL_BOL_PV_BOLIVAR (Puntos de Venta Bolivar / Cartagena - BOL_PV)
+- AL_VIC_ADMON_FINCAS (Administracion Fincas Vichada - VIC_ADMON)
+
+CUENTAS CORPORATIVAS Y ESPECIALES:
+- AL_PRACTICANTES (Practicantes y Aprendices SENA - PRACTICANTES)
+- AL_EXTERNOS (Personal Externo y Contratistas - EXTERNOS)
+- AL_ESPECIALES (Cuentas y Servicios Especiales - ESPECIALES)
+- AL_NEXO (Usuarios Nexo y Servicios Centralizados - NEXO)
+- AL_INACTIVOS (Usuarios Retirados o Inactivos - INACTIVOS)
+
+
+3. PESTANA 1: CREAR USUARIO INDIVIDUAL
+
+Disenada para el alta rapida de nuevos colaboradores con informacion enviada
+por Gestion Humana:
+
+1. Auto-Completar en 1 Clic (o tecla Enter):
+   - Pega la linea enviada por GH en la barra superior:
+     12345678 PEPITO PEREZ RODRIGUEZ OPERARIO PLANTA
+
+   - Presiona Enter o el boton [ Auto-Rellenar Formulario ]:
+     - Parsea Cedula, Nombres, Apellidos y Cargo.
+     - Asigna el nombre de usuario obligatorio: nombre.apellido (pepito.perez).
+     - Asigna la Sede oficial seleccionada y el departamento sugerido.
+     - Genera la contrasena temporal corporativa estandar (Aliar2026 con caracter final).
+     - Control Anti-Duplicados: Verifica en tiempo real si el usuario o la
+       cuenta de red ya existen en Active Directory para impedir duplicados
+       accidentales. Si ya existe, alerta con los datos del usuario y sugiere
+       gestionarlo en la Pestana 2.
+
+2. Clonar Permisos de un Usuario Modelo:
+   - Si el nuevo colaborador tendra las mismas funciones que alguien del equipo,
+     busca al companero en la caja "Buscar colaborador activo en el DA".
+   - Selecciona al modelo y presiona [ Cargar Permisos y Sede al Formulario ]
+     para heredar su perfil web, sede, acceso VPN y carpetas departamentales (GR_DC_).
+
+3. Perfiles y Acceso VPN:
+   - Selecciona el Perfil de Navegacion Web (Moderadamente Restrictivo, Muy Restrictivo, Equilibrado, etc.).
+   - Casilla de Acceso VPN: Asigna directamente la membresia al grupo corporativo
+     GR_VPN_SSL en Active Directory con reintentos automaticos contra el controlador de dominio.
+   - Marca o desmarca las carpetas departamentales (GR_DC_) usando el buscador rapido.
+
+4. Creacion Directa:
+   - En el panel derecho, verifica la ficha del colaborador y presiona
+     [ CREAR USUARIO EN ACTIVE DIRECTORY ].
+   - El sistema solicita confirmacion mostrando la sede oficial, la ruta OU exacta
+     donde se alojara la cuenta y la contrasena temporal configurada.
+   - La cuenta se crea directamente en su OU correspondiente y se le asignan
+     todas sus membresias en Active Directory.
+
+5. Copiar Datos de Acceso para Notificacion:
+   - Presiona el boton [ Copiar Datos de Acceso (Usuario y Clave) ] ubicado en el panel
+     lateral derecho para copiar al portapapeles exclusivamente el formato estandar:
+       Usuario de dominio: nombre.apellido
+       Contrasena: clave
+   - Al crearse exitosamente la cuenta en el dominio, el sistema tambien copia de forma
+     automatica este formato limpio al portapapeles para pegarlo de inmediato en correo,
+     Teams o WhatsApp.
+
+
+4. PESTANA 2: GESTIONAR PERMISOS (USUARIO EXISTENTE)
+
+Permite consultar y modificar las membresias y carpetas de colaboradores ya activos:
+
+1. Busqueda Instantanea y Consulta en Tiempo Real:
+   - Escribe el nombre, apellido o usuario de dominio en la caja
+     de busqueda y selecciona al colaborador.
+   - Si el equipo esta conectado al dominio, el sistema consulta en vivo sus
+     membresias actualizadas mediante el modulo de Active Directory.
+
+2. Tarjeta de Datos y Visor de Permisos Actuales:
+   - La tarjeta se divide en 2 columnas de alta legibilidad:
+     - Columna Izquierda (Ficha): Nombre Completo, Cuenta de Dominio UPN,
+       Sede, Departamento, Cargo, Perfil Web Actual y Estado de Acceso VPN.
+     - Columna Derecha (Membresias Actuales): Caja de lista interactiva (ListBox)
+       que detalla todos los grupos y carpetas departamentales que el colaborador
+       tiene asignados en Active Directory.
+   - Simultaneamente, el sistema marca de forma automatica en el formulario
+     inferior su perfil web, su casilla de VPN (GR_VPN_SSL) y todas sus carpetas GR_DC_.
+
+3. Clonar Permisos desde un Colaborador Modelo:
+   - Si deseas homologar los permisos de este usuario con los de otro colaborador
+     modelo del area o sede, busca al modelo en el panel "Clonar Permisos desde
+     un Colaborador Modelo" y presiona [ Copiar Permisos del Modelo ].
+   - Se aplicaran inmediatamente su perfil web, estado VPN y carpetas GR_DC_
+     sobre el formulario del usuario activo.
+
+4. Modificacion Manual de Accesos:
+   - Marca nuevas carpetas para agregarlas o desmarca carpetas para revocarlas.
+   - El panel derecho muestra en tiempo real el diferencial ([+] AGREGAR / [-] REMOVER).
+
+5. Aplicar en el Dominio:
+   - Presiona [ APLICAR CAMBIOS DE PERMISOS EN EL DA ] para ejecutar los cambios
+     directamente en el Active Directory.
+
+
+5. PESTANA 3: CARGA MASIVA (LOTES MULTI-CARGO / MULTI-SEDE / MULTI-AREA)
+
+Disenada especificamente para listas mixtas donde los colaboradores pertenecen a
+distintas sedes, cargos o departamentos:
+
+1. Pegar la Lista de Gestion Humana:
+   - Pega todas las lineas sin importar que tengan diferentes cargos o plantas:
+     12345678 PEPITO PEREZ RODRIGUEZ OPERARIO TIPO C
+     87654321 JUAN CARLOS GOMEZ LOPEZ OPERARIO PLANTA
+     52876123 MARIA PAULA HERNANDEZ CASTRO ANALISTA GESTION HUMANA
+     1098765432 CARLOS ANDRES LOPEZ PEREZ AUXILIAR BODEGA
+     80123456 JORGE ENRIQUE GOMEZ DIAZ VETERINARIO GRANJA
+
+2. Procesar y Clasificar:
+   - Presiona [ Procesar y Clasificar Lista de Colaboradores ]:
+     - El motor heuristico clasifica individualmente cada fila asignando sede,
+       departamento, perfil web y la contrasena corporativa temporal:
+       - Operarios de planta -> CUN_PLENG / Planta Engativa / GR_Perfil_Muy_Restrictivo.
+       - Operarios frigorifico -> MET_FRIG / Planta Frigorifico / GR_Perfil_Muy_Restrictivo.
+       - Gestion Humana -> SAN_OFPP / Gestion Humana / GR_Perfil_Moderadamente_Restrictivo.
+       - Bodega / Despachos -> CUN_DISBOG / Logistica / GR_Perfil_Muy_Restrictivo.
+       - Veterinarios / Granjas -> MET_PORCI / Agronomia / GR_Perfil_Muy_Restrictivo.
+     - Valida en tiempo real contra Active Directory si cada cuenta ya existe
+       ([Disponible para Crear] vs [Ya Registrado en DA]).
+
+3. Edicion Fila a Fila en la Tabla (Incluye Casilla de Acceso VPN):
+   - Las columnas Sede / Ubicacion (OU), Departamento y Perfil Web en la tabla son
+     desplegables interactivos directos con todas las opciones del dominio.
+   - Columna "Acceso VPN" (Casilla interactiva): Permite controlar
+     exactamente a que colaboradores se les otorgara acceso remoto seguro (GR_VPN_SSL).
+     - Al procesar el lote, el sistema activa la casilla de VPN por defecto.
+     - Puedes desmarcar o marcar el acceso VPN de cualquier colaborador en la
+     tabla con un solo clic.
+     - El panel lateral derecho y el reporte CSV reflejan en tiempo real el
+     total de accesos VPN configurados en el lote.
+
+4. Creacion Masiva con Ruteo OU Automatico:
+   - Presiona [ CREAR TODOS LOS USUARIOS DEL LOTE EN EL DA ]:
+     - El sistema procesa los colaboradores disponibles e ignora automaticamente
+       los registros que ya existan en el dominio, evitando duplicaciones.
+     - Cada usuario se crea en su propia Unidad Organizativa (OU) bajo USUARIOS
+       segun la sede indicada en la tabla.
+     - Se asigna su perfil web y su membresia al grupo corporativo GR_VPN_SSL
+       si fue seleccionada la casilla.
+     - Su DisplayName en el DA queda con el estandar corporativo
+       (ejemplo: Pepito Perez Rodriguez - CUN_PLENG), con nombres y cargo en tipo titulo
+       y la sede en mayuscula sostenida.
+
+5. Copiar Credenciales del Lote (Para Notificacion y Entrega a GH):
+   - Presiona [ Copiar Credenciales del Lote ] en la barra inferior o [ Copiar Credenciales
+     del Lote (Para GH) ] en el panel derecho para copiar las cuentas creadas en formato limpio:
+       Usuario de dominio: nombre.apellido
+       Contrasena: clave
+   - Clic Derecho en la Tabla: Permite copiar individualmente las credenciales del colaborador
+     seleccionado o copiar todo el lote en este mismo formato estandar.
+   - Al finalizar la creacion masiva, las credenciales del lote se copian automaticamente al
+     portapapeles listas para pegar en el correo de entrega.
+
+6. Reporte Formal para Gestion Humana:
+   - Presiona [ Exportar Reporte a GH (CSV / Excel) ] para generar el archivo
+     de entrega en formato CSV compatible con Microsoft Excel.
+================================================================================

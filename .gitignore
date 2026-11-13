@@ -1,0 +1,18 @@
+# Archivos temporales y de depuracion
+*.tmp
+*.bak
+*.log
+*~
+
+# Exportaciones locales generadas en tiempo de ejecucion (datos sensibles de colaboradores)
+Reporte_Aprovisionamiento_GH_*.csv
+*.csv
+
+# Directorios de configuracion local de editores
+.vscode/
+.idea/
+
+# Archivos de sistema operativo Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
