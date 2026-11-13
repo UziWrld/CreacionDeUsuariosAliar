@@ -9,21 +9,18 @@ Aplicación corporativa de producción para la gestión, consulta, clonación de
 ## 🚀 Inicio Rápido
 
 Para ejecutar la aplicación en cualquier equipo:
-1. Haz doble clic sobre **`Iniciar-AppWinForms.vbs`** o **`Iniciar-AppWinForms.bat`**.
-2. La ventana se abrirá de manera silenciosa, nativa y sin consolas PowerShell visibles.
-3. Para crear un acceso directo en tu Escritorio, ejecuta **`Crear-AccesoDirectoEscritorio.bat`**.
+1. Haz doble clic sobre **`Iniciar-AppWinForms.vbs`** (lanzamiento silencioso sin consolas) o **`Iniciar-AppWinForms.bat`**.
+2. Para crear un acceso directo en tu Escritorio, ejecuta **`Crear-AccesoDirectoEscritorio.bat`**.
 
 ---
 
 ## 🔄 Cómo Actualizar la Herramienta (Para el Equipo)
 
-Cualquier miembro del equipo con acceso al repositorio puede actualizar la aplicación a la última versión de dos formas sencillas:
+Cualquier miembro del equipo con acceso al repositorio puede actualizar la aplicación a la última versión ejecutando en una terminal dentro de esta carpeta:
 
-1. **Doble clic en `Actualizar-App.bat`** (Recomendado, no requiere escribir comandos).
-2. O ejecutando en una terminal dentro de esta carpeta:
-   ```bash
-   git pull
-   ```
+```bash
+git pull
+```
 
 ---
 
@@ -59,8 +56,6 @@ Cualquier miembro del equipo con acceso al repositorio puede actualizar la aplic
 - `App-CreacionUsuariosAliar.ps1`: Script principal con interfaz gráfica Windows Forms y lógica de dominio.
 - `MANUAL_DE_USO.txt`: Manual operativo detallado en texto plano.
 - `README.md`: Documentación del proyecto.
-- `Actualizar-App.bat`: Script de un clic para que los compañeros actualicen vía `git pull`.
-- `Subir-AGitHub.bat`: Script para sincronizar y subir cambios a GitHub.
 - `aliar_ad_data.json`: Base de datos local de respaldo con estructura de grupos y usuarios.
 - `Logo-web-1.png`: Logotipo corporativo de Aliar S.A.
 - `Iniciar-AppWinForms.vbs`: Lanzador silencioso sin consola para usuarios finales.
